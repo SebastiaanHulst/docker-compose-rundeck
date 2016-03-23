@@ -1,16 +1,14 @@
 version: '2'
 services:
-  apache:
-    image: httpd
+  frontend:
+    image: robertdebock/docker-rundeck-httpd
     ports:
       - 8080:80
-    volumes:
-      - /var/log/httpd
     depends_on:
       - rundeck
     links:
       - rundeck
-  rundeck:
+  application:
     image: robertdebock/docker-rundeck:mysql
     ports:
       - "4440:4440"
@@ -23,7 +21,7 @@ services:
       - mysql
     links:
       - mysql
-  mysql:
+  datalake:
     image: mysql
     ports:
       - "3306:3306"
