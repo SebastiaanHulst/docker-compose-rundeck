@@ -17,3 +17,8 @@ services:
     image: mysql
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rundeck
+      MYSQL_DATABASE: rundeck
+      MYSQL_USER: rundeck
+      MYSQL_PASSWORD: rundeck
