@@ -1,0 +1,19 @@
+version: '2'
+services:
+  rundeck:
+    image: robertdebock/docker-rundeck:mysql
+    ports:
+      - "4440:4440"
+    volumes:
+      - /var/log/rundeck
+      - /var/rundeck
+    environment:
+      URL: http://192.168.99.100
+    depends_on:
+      - mysql
+    links:
+      - mysql
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
