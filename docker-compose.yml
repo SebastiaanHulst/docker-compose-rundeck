@@ -1,14 +1,14 @@
 version: '2'
 services:
-  frontend:
+  web:
     image: robertdebock/docker-rundeck-httpd
     ports:
       - 8080:80
     depends_on:
-      - application
+      - rundeck
     links:
       - rundeck
-  application:
+  rundeck:
     image: robertdebock/docker-rundeck:mysql
     ports:
       - "4440:4440"
@@ -18,10 +18,10 @@ services:
     environment:
       URL: http://192.168.99.100
     depends_on:
-      - datalayer
+      - mysql
     links:
       - mysql
-  datalayer:
+  mysql:
     image: mysql
     ports:
       - "3306:3306"
