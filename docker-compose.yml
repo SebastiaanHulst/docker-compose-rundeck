@@ -1,5 +1,15 @@
 version: '2'
 services:
+  apache:
+    image: httpd
+    ports:
+      - 8080:80
+    volumes:
+      - /var/log/httpd
+    depends_on:
+      - rundeck
+    links:
+      - rundeck
   rundeck:
     image: robertdebock/docker-rundeck:mysql
     ports:
