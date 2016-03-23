@@ -18,10 +18,10 @@ services:
     environment:
       URL: http://192.168.99.100
     depends_on:
-      - mysql
+      - datalayer
     links:
       - mysql
-  datalake:
+  datalayer:
     image: mysql
     ports:
       - "3306:3306"
