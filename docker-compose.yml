@@ -14,8 +14,15 @@ services:
       - /var/log/rundeck
       - /var/rundeck
     environment:
-      URL: http://192.168.99.100
+      CONTEXT: /rundeck
+      HOST: 192.168.99.100
+      NAME: RUNDECK
       PORT: 8008
+      PROTOCOL: http
+      MYSQL_DATABASE: rundeck
+      MYSQL_HOST: mysql
+      MYSQL_PASSWORD: rundeck
+      MYSQL_USER: rundeck
     depends_on:
       - mysql
     links:
