@@ -10,9 +10,6 @@ services:
       - rundeck
   rundeck:
     image: robertdebock/docker-rundeck:mysql
-    volumes:
-      - /var/log/rundeck
-      - /var/rundeck
     environment:
       CONTEXT: /rundeck
       HOST: 192.168.99.100
@@ -23,6 +20,9 @@ services:
       NAME: RUNDECK
       PORT: 8080
       PROTOCOL: http
+    volumes:
+      - /var/log/rundeck
+      - /var/rundeck
     depends_on:
       - mysql
     links:
