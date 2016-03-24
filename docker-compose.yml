@@ -11,7 +11,7 @@ services:
   rundeck:
     image: robertdebock/docker-rundeck:mysql
     environment:
-      CONTEXT: /rundeck
+      CONTEXT: rundeck
       HOST: 192.168.99.100
       MYSQL_DATABASE: rundeck
       MYSQL_HOST: mysql
