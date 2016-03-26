@@ -12,7 +12,6 @@ services:
     build: ../docker-rundeck
     environment:
       HOST: 192.168.99.100
-      PORT: 8080
       URL: http://192.168.99.100:8080/rundeck
       MYSQL_DATABASE: rundeck
       MYSQL_HOST: mysql
