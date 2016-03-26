@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: robertdebock/docker-rundeck-httpd
+    build: ../docker-rundeck-httpd/
     ports:
       - 8080:80
     depends_on:
@@ -9,17 +9,15 @@ services:
     links:
       - rundeck
   rundeck:
-    image: robertdebock/docker-rundeck:mysql
+    build: ../docker-rundeck
     environment:
-      CONTEXT: rundeck
       HOST: 192.168.99.100
+      PORT: 8080
+      URL: http://192.168.99.100:8080/rundeck
       MYSQL_DATABASE: rundeck
       MYSQL_HOST: mysql
       MYSQL_PASSWORD: rundeck
       MYSQL_USER: rundeck
-      NAME: RUNDECK
-      PORT: 8080
-      PROTOCOL: http
     volumes:
       - /var/log/rundeck
       - /var/rundeck
