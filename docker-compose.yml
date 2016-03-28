@@ -3,7 +3,10 @@ services:
   web:
     image: robertdebock/docker-rundeck-httpd
     ports:
-      - 8080:80
+      - 80:80
+      - 443:443
+    volumes:
+      - ~/Documents/httpd/usr/local/apache2/logs:/usr/local/apache2/logs
     depends_on:
       - rundeck
     links:
@@ -12,7 +15,7 @@ services:
     image: robertdebock/docker-rundeck
     environment:
       HOST: 192.168.99.100
-      URL: http://192.168.99.100:8080/rundeck
+      URL: https://192.168.99.100/rundeck
     volumes:
       - ~/Documents/rundeck/var/log/rundeck:/var/log/rundeck
       - ~/Documents/rundeck/var/rundeck:/var/rundeck
