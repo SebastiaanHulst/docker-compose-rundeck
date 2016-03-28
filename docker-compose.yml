@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    build: ../docker-rundeck-httpd/
+    image: robertdebock/docker-rundeck-httpd
     ports:
       - 8080:80
     depends_on:
@@ -9,17 +9,13 @@ services:
     links:
       - rundeck
   rundeck:
-    build: ../docker-rundeck
+    image: robertdebock/docker-rundeck
     environment:
       HOST: 192.168.99.100
       URL: http://192.168.99.100:8080/rundeck
-      MYSQL_DATABASE: rundeck
-      MYSQL_HOST: mysql
-      MYSQL_PASSWORD: rundeck
-      MYSQL_USER: rundeck
     volumes:
-      - /var/log/rundeck
-      - /var/rundeck
+      - ~/Documents/rundeck/var/log/rundeck:/var/log/rundeck
+      - ~/Documents/rundeck/var/rundeck:/var/rundeck
     depends_on:
       - mysql
     links:
@@ -31,3 +27,7 @@ services:
       MYSQL_DATABASE: rundeck
       MYSQL_USER: rundeck
       MYSQL_PASSWORD: rundeck
+    volumes:
+      - ~/Documents/mysql/var/lib/mysql:/var/lib/mysql
+      - ./fix-mysql-permissions.sh:/fix-mysql-permissions.sh
+    command: "/fix-mysql-permissions.sh"
