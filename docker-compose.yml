@@ -2,11 +2,16 @@ version: '2'
 services:
   web:
     image: robertdebock/docker-rundeck-httpd
+    environment:
+      SSL_COUNTRY: NL
+      SSL_STATE: Utrecht
+      SSL_LOCATION: Breukelen
+      SSL_ORGANIZATION: Me in IT Consultancy
+      SSL_ORGANIZATIONAL_UNIT: IT Department
+      SSL_COMMONNAME: rundeck.meinit.nl
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ~/Documents/httpd/usr/local/apache2/logs:/usr/local/apache2/logs
     depends_on:
       - rundeck
     links:
