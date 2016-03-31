@@ -2,13 +2,7 @@ version: '2'
 services:
   web:
     image: robertdebock/docker-rundeck-httpd
-    environment:
-      SSL_COUNTRY: NL
-      SSL_STATE: Utrecht
-      SSL_LOCATION: Breukelen
-      SSL_ORGANIZATION: Me in IT Consultancy
-      SSL_ORGANIZATIONAL_UNIT: IT Department
-      SSL_COMMONNAME: rundeck.meinit.nl
+    env_file: "variables.env"
     ports:
       - 80:80
       - 443:443
@@ -18,9 +12,7 @@ services:
       - rundeck
   rundeck:
     image: robertdebock/docker-rundeck
-    environment:
-      HOST: 192.168.99.100
-      URL: https://192.168.99.100/rundeck
+    env_file: "variables.env"
     volumes:
       - ~/Documents/rundeck/var/log/rundeck:/var/log/rundeck
       - ~/Documents/rundeck/var/rundeck:/var/rundeck
@@ -30,11 +22,7 @@ services:
       - mysql
   mysql:
     image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: rundeck
-      MYSQL_DATABASE: rundeck
-      MYSQL_USER: rundeck
-      MYSQL_PASSWORD: rundeck
+    env_file: "variables.env"
     volumes:
       - ~/Documents/mysql/var/lib/mysql:/var/lib/mysql
       - ./fix-mysql-permissions.sh:/fix-mysql-permissions.sh
