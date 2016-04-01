@@ -25,5 +25,5 @@ services:
     env_file: "variables.env"
     volumes:
       - ~/Documents/mysql/var/lib/mysql:/var/lib/mysql
-      - ./fix-mysql-permissions.sh:/fix-mysql-permissions.sh
-    command: "/fix-mysql-permissions.sh"
+#      - ./fix-mysql-permissions.sh:/fix-mysql-permissions.sh
+#    command: "/fix-mysql-permissions.sh"
