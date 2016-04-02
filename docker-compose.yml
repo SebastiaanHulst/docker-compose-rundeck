@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: robertdebock/docker-rundeck-httpd
+    build: ./web
     env_file: "variables.env"
     ports:
       - 80:80
@@ -11,7 +11,7 @@ services:
     links:
       - rundeck
   rundeck:
-    image: robertdebock/docker-rundeck
+    build: ./application
     env_file: "variables.env"
     volumes:
       - ~/Documents/rundeck/var/log/rundeck:/var/log/rundeck
@@ -25,5 +25,5 @@ services:
     env_file: "variables.env"
     volumes:
       - ~/Documents/mysql/var/lib/mysql:/var/lib/mysql
-#      - ./fix-mysql-permissions.sh:/fix-mysql-permissions.sh
-#    command: "/fix-mysql-permissions.sh"
+      - ./mysql/fix-mysql-permissions.sh:/fix-mysql-permissions.sh
+    command: "/fix-mysql-permissions.sh"
