@@ -10,11 +10,12 @@ To use this "environment" issue:
 
     git clone https://github.com/robertdebock/docker-compose-rundeck.git
     cd docker-compose-rundeck
-    # Edit settings (See below) to you liking.
+    # Edit settings in variables.env to you liking.
+    docker-compose build
     docker-compose up
 
+When everything has been started (should take some 30 seconds) you can visit the URL that you've specified in variables.env.
+
 Interesting settings:
-- The "web" service must be listening to a port, you may need to change "ports".
-- For every service where "volumes" are used; change the mapping to a location where you want to store the persistent data.
-- The "rundeck" service must be given an "HOST" and "URL". The HOST is where the API will be available, the URL is where a user will be redirected to. This is likely a (publicly) available URL like: https://example.com/rundeck.
-- The "mysql" service has a "volume" and "command" for fixing a permission problem when mounting host-volumes into the container. It may be unnecessary for you Docker host. 
+- The "web" service must be listening to a port, you may need to change "ports" in docker-compose.yml
+- The "mysql" service has a "volume" and "command" for fixing a permission problem when mounting Mac OS X host-volumes into the container. (fix-mysql-permissions.sh) It may be unnecessary for you Docker host. 
