@@ -1,7 +1,10 @@
 version: '2'
 services:
+  proxy:
+    image: robertdebock/docker-cntlm
+    env_file: "variables.env"
   web:
-    build: ./web
+    image: robertdebock/docker-rundeck-httpd
     env_file: "variables.env"
     ports:
       - 80:80
@@ -11,19 +14,20 @@ services:
     links:
       - rundeck
   rundeck:
-    build: ./application
+    image: robertdebock/docker-rundeck
+    container_name: rundeck
     env_file: "variables.env"
     volumes:
-      - ~/Documents/rundeck/var/log/rundeck:/var/log/rundeck
-      - ~/Documents/rundeck/var/rundeck:/var/rundeck
+      - /var/log/rundeck
+      - /var/rundeck
     depends_on:
       - mysql
     links:
       - mysql
+      - proxy
   mysql:
     image: mysql
+    container_name: mysql
     env_file: "variables.env"
     volumes:
-      - ~/Documents/mysql/var/lib/mysql:/var/lib/mysql
-      - ./mysql/fix-mysql-permissions.sh:/fix-mysql-permissions.sh
-    command: "/fix-mysql-permissions.sh"
+      - /var/lib/mysql
