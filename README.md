@@ -43,3 +43,11 @@ When everything has been started (should take some 30 seconds) you can visit the
 Interesting settings:
 - The "web" service must be listening to a port, you may need to change "ports" in docker-compose.yml
 - The "mysql" service has a "volume" and "command" for fixing a permission problem when mounting Mac OS X host-volumes into the container. (fix-mysql-permissions.sh) It may be unnecessary for you Docker host. 
+
+To backup data, use:
+
+    ./scripts/backup.sh
+
+And to restore:
+
+    ./scripts/restore.sh
