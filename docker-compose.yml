@@ -1,8 +1,5 @@
 version: '2'
 services:
-  proxy:
-    image: robertdebock/docker-cntlm
-    env_file: "variables.env"
   web:
     image: robertdebock/docker-rundeck-httpd
     env_file: "variables.env"
@@ -24,7 +21,6 @@ services:
       - mysql
     links:
       - mysql
-      - proxy
   mysql:
     image: mysql
     container_name: mysql
