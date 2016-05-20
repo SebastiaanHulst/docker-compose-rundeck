@@ -24,7 +24,7 @@ The variables.env needs to be set like you would like, here is a sample:
     SSL_COMMONNAME=rundeck.meinit.nl
     
     HOST=192.168.99.100
-    URL https://192.168.99.100/rundeck
+    URL=https://192.168.99.100/rundeck
     SERVERNAME=rundeck.meinit.nl
     SERVERADMIN=robert@meinit.nl
 
@@ -33,10 +33,6 @@ The variables.env needs to be set like you would like, here is a sample:
     MYSQL_USER=rundeck
     MYSQL_PASSWORD=rundeck
 
-    USERNAME=myusername
-    DOMAIN=mydomain
-    PASSNTLMV2=MYHASH
-    PROXY=corporateproxy:3128 
 
 When everything has been started (should take some 30 seconds) you can visit the URL that you've specified in variables.env.
 
