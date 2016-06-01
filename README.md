@@ -1,22 +1,13 @@
 # docker-compose-rundeck
 An environment to run RUNDECK.
 
-
 ## Overview
 There are 3 containers configured:
 - Apache HTTPD - As a web frontend.
 - RUNDECK - The application.
 - MySQL - The storage for jobs and job-history.
 
-
 ## Starting it up.
-To use this "environment" issue:
-
-    git clone https://github.com/robertdebock/docker-compose-rundeck.git
-    cd docker-compose-rundeck
-    # Edit settings in variables.env to you liking, see below.
-    docker-compose up
-
 The variables.env needs to be set like you would like, here is a sample:
 
     # Variables are set here and available in each Docker container.
@@ -36,6 +27,13 @@ The variables.env needs to be set like you would like, here is a sample:
     MYSQL_DATABASE=rundeck
     MYSQL_USER=rundeck
     MYSQL_PASSWORD=rundeck
+
+After creating the variables.env, run these commands.
+
+    git clone https://github.com/robertdebock/docker-compose-rundeck.git
+    cd docker-compose-rundeck
+    # Edit settings in variables.env to you liking, see below.
+    docker-compose up
 
 When everything has been started (should take some 30 seconds) you can visit the URL that you've specified in variables.env.
 The default username and password is "admin" and "admin".
