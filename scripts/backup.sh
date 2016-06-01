@@ -1,5 +1,11 @@
 #!/bin/bash
 
+checkdir() {
+  if [ ! -d data ] ; then
+    mkdir data
+  fi
+}
+
 backupdatabase() {
   echo -n "Backing up database: "
   docker exec mysql sh -c 'exec mysqldump -uroot -p"rundeck" rundeck' > data/database.mysql 2> /dev/null
@@ -23,5 +29,6 @@ backupfiles() {
   fi
 }
 
+checkdir
 backupdatabase
 backupfiles
