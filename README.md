@@ -32,7 +32,7 @@ After creating the variables.env, run these commands.
 
     git clone https://github.com/robertdebock/docker-compose-rundeck.git
     cd docker-compose-rundeck
-    # Edit settings in variables.env to you liking, see below.
+    # Edit settings in variables.env to you liking, see above.
     docker-compose up
 
 When everything has been started (should take some 30 seconds) you can visit the URL that you've specified in variables.env.
